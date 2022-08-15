@@ -1,0 +1,13 @@
+CREATE TABLE flights (
+    flightid TEXT PRIMARY KEY,
+    origin TEXT,
+    destination TEXT,
+    departuredate TEXT,
+    departuretime TEXT
+);
+
+CREATE TABLE prices (
+    date TEXT,
+    price REAL,
+    flight TEXT REFERENCES flights
+);
