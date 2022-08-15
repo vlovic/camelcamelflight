@@ -6,10 +6,9 @@ const axios = require("axios");
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-  response = await axios.get('http://localhost:3000/dummy-API')
-
-  console.log(response.data)
-  res.json(response.data)
+  // get data from db
+  // pass data to template as local variable
+  res.render('index', { title: 'Fligh price tracker', xdata: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], ydata: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] })
 });
 
 router.get('/dummy-API', (req, res, next) => {

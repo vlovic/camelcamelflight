@@ -3,3 +3,22 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  canvas(id="myChart" width="400" height="200")
+  script. 
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    config = {
+        type: 'line',
+        data: {
+            labels: [#{xdata}],
+            datasets: [{
+                label: "flight-price",
+                data: [#{ydata}]
+            }]
+        }
+    }
+
+    const myChart = new Chart(ctx, config);
+
+
+
