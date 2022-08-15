@@ -2,13 +2,31 @@ var express = require('express');
 var router = express.Router();
 
 const axios = require("axios");
-
+const sqlite3 = require('sqlite3')
+let db = new sqlite3.Database('./database/flight-data.sqlite')
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-  // get data from db
-  // pass data to template as local variable
-  res.render('index', { title: 'Fligh price tracker', xdata: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], ydata: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] })
+
+  const xdata = []
+  const ydata = []
+
+  let sql = 'SELECT * FROM prices'
+  db.all(sql, function cb(err, rows) {
+    if (err) {
+      console.log(err);
+    };
+
+    rows.forEach(row => {
+      console.log(row.date)
+      xdata.push(row.date)
+      ydata.push(row.price)
+      console.log(xdata)
+    })
+
+    res.render('index', { title: 'Flight price tracker', xdata: xdata, ydata: ydata })
+  });
+
 });
 
 router.get('/dummy-API', (req, res, next) => {

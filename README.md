@@ -5,4 +5,4 @@ TODO:
 - Every day:
     - Check whether there is data that is more than X days old and delete it. 
 - Switch to making API requests to the actual API, rather than dummy. 
-- Then display a graph with the price info over time on the root page. 
+- Let the user select which flight to track and view
