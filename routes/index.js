@@ -18,10 +18,8 @@ router.get('/', async function (req, res, next) {
     };
 
     rows.forEach(row => {
-      console.log(row.date)
       xdata.push(row.date)
       ydata.push(row.price)
-      console.log(xdata)
     })
 
     res.render('index', { title: 'Flight price tracker', xdata: xdata, ydata: ydata })
